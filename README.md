@@ -17,7 +17,7 @@ A ideia principal foi manter todas as interações em uma única página, sem ut
 
   ```bash
     cd database
-    docker run --name mysql-pharmaviews -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -e MYSQL_DATABASE=db -p 3306:3306 -v $(pwd)/mysql_init:/docker-entrypoint-initdb.d -d mysql:latest
+    docker run --name mysql-pv-db -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -e MYSQL_DATABASE=db -p 3306:3306 -v $(pwd)/mysql_init:/docker-entrypoint-initdb.d -d mysql:latest
   ```
 
 Isso vai criar um container de MySQL para o seu backend poder acessar.
@@ -33,7 +33,7 @@ Isso vai criar um container de MySQL para o seu backend poder acessar.
 4. Caso queira interagir com o Banco de dados, pode rodar o comando **(opcional)**:  
 
   ```bash
-    docker exec -it mysql-pharmaviews mysql -u root -p
+    docker exec -it mysql-pv-db mysql -u root -p
   ```
 
   Dentro, você pode rodar comandos SQL para interagir.
