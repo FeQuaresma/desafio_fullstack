@@ -1,5 +1,16 @@
 # Desafio FullStack
 
+## Visão Geral
+
+Aprendi bastante com a realização desse teste, já tinha feito conexões de API atráves de Express e Nest.js, então foi uma experiência boa aprender a fazer essa conexão em python.
+O backend é feito de forma para que os dados passados sejam verificados por tipos, diminuindo inclusão errada de dados.
+O fronend é uma área que já tenho mais experiência e e o uso de bootstrap é bem parecido com o uso de tailwind para Next.js, acredito que com um pouco mais de tempo estudando, vou ter bastante facilidade para criar páginas com ele.
+
+Busquei reutilizar a tela do protótipo para que não houvesse necessidade de abrir um pop-up ou um modal, tornando a experiência mais fluída.
+Fiz isso em duas situações, para adicionar um tipo de ação novo clicando no **+** ao lado da lavel **Ação**, e ao editar, os botões se tornam os botões de editar o conteúdo da linha selecionada.
+
+No geral, me diverti bastante fazendo, WEB é a parte que eu mais me identifiquei dentro da programação e gostaria de continuar estudando e eventualmente contrubuindo para a área.
+
 ## Começando com o Mysql
 
 1. Baixe e instale o Docker
