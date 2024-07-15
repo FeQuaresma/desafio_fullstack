@@ -22,6 +22,14 @@ class AcaoBase(BaseModel):
 class AcaoCreate(AcaoBase):
     codigo_acao: int
 
+class AcaoUpdate(BaseModel):
+    investimento: float | None = None
+    data_prevista: date | None = None
+    codigo_acao: int | None = None
+
+    class Config:
+        orm_mode = True
+
 class Acao(AcaoBase):
     id: int
     codigo_acao: int

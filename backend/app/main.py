@@ -17,7 +17,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Dependency
 def get_db():
     db = SessionLocal()
     try:
@@ -25,13 +24,10 @@ def get_db():
     finally:
         db.close()
 
-
-
 @app.get("/tipos_acao/", response_model=list[schemas.TipoAcao])
 def read_tipos_acao(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     tipos_acao = crud.get_tipos_acao(db, skip=skip, limit=limit)
     return tipos_acao
-
 
 @app.get("/tipo_acao/{codigo_acao}", response_model=schemas.TipoAcao)
 def read_tipo_acao(codigo_acao: int, db: Session = Depends(get_db)):
@@ -47,14 +43,27 @@ def create_tipo_acao(tipo_acao: schemas.TipoAcaoCreate, db: Session = Depends(ge
         raise HTTPException(status_code=400, detail="Tipo de ação já registrado")
     return crud.create_tipo_acao(db=db, tipo_acao=tipo_acao)
 
-
 @app.post("/acao/", response_model=schemas.Acao)
 def create_acao(acao: schemas.AcaoCreate, db: Session = Depends(get_db)):
-    return crud.create_acao(db=db, acao=acao, codigo_acao=acao.codigo_acao)
+    return crud.create_acao(db=db, acao=acao)
 
+@app.get("/acao/{id}", response_model=schemas.Acao)
+def read_acao(id: int, db: Session = Depends(get_db)):
+    return crud.get_acao(db, id=id)
+
+@app.delete("/acao/{id}")
+def delete_acao(id: int, db: Session = Depends(get_db)):
+    db_acao = crud.get_acao(db, id=id)
+    return crud.delete_acao(db, db_acao)
 
 @app.get("/acoes/", response_model=list[schemas.Acao])
 def read_acoes(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     acoes = crud.get_acoes(db, skip=skip, limit=limit)
     return acoes
 
+@app.patch("/acao/{id}", response_model=schemas.Acao)
+def patch_acao(id: int, acao_update: schemas.AcaoUpdate, db: Session = Depends(get_db)):
+    db_acao = crud.patch_acao(db, id=id, acao_update=acao_update)
+    if db_acao is None:
+        raise HTTPException(status_code=404, detail="Ação não encontrada")
+    return db_acao

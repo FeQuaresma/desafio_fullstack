@@ -13,3 +13,8 @@ CREATE TABLE IF NOT EXISTS acao
     data_cadastro DATE,
     FOREIGN KEY (codigo_acao) REFERENCES tipo_acao (codigo_acao)
 );
+
+INSERT INTO tipo_acao (nome_acao) VALUES ('Palestra'), ('Evento'), ('Apoio Grafico');
+
+INSERT INTO acao (codigo_acao, investimento, data_prevista, data_cadastro)
+VALUES (1, 100.00, '2024-07-17', '2024-07-17');
