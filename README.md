@@ -103,6 +103,6 @@ Libs:
   - Sem Framework
 
 Libs:
-  - Bootstrap 3.4: Facilita a padroniza grande parte do CSS da pagina
+  - Bootstrap 3.4: Facilita a padronizaçaõ de grande parte do CSS da pagina
   - DataTables: Cria a tabela que é mostrada os dados
   
